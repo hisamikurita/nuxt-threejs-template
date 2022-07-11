@@ -1,0 +1,50 @@
+// media query
+@mixin sp() {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tab() {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin pc() {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+// hover可能な端末に絞ったhover
+@mixin hover() {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//three point leader
+@mixin line-clamp($num, $num-sp: null) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+
+  @if $num-sp {
+    @include mq {
+      -webkit-line-clamp: $num-sp;
+    }
+  }
+}
+
+//hover
+@mixin isHoverDecrementAlpha() {
+  transition: opacity $base-duration $colorAndOpacity-easing;
+
+  @include hover() {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,15 @@
+.is-pc-show {
+  display: block;
+
+  @include sp() {
+    display: none;
+  }
+}
+
+.is-sp-show {
+  display: none;
+
+  @include sp() {
+    display: block;
+  }
+}
